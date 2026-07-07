@@ -7,7 +7,7 @@ PulseTrack is a beautiful, modern full-stack web application designed for engine
 ## 📁 Monorepo Structure
 
 ```text
-weekly-report-app/
+PulseTrack/
 ├── frontend/          # React (Vite + TypeScript + TanStack Router & Start)
 ├── backend/           # Python (FastAPI) [Planned/Phase 2]
 └── README.md          # Setup & developer documentation
@@ -41,7 +41,7 @@ Before running the frontend, set up your Supabase database schema and authentica
 1. Sign up/Log in to [Supabase](https://supabase.com).
 2. Create a new project.
 3. Open the **SQL Editor** in your Supabase dashboard.
-4. Navigate to `/weekly-report-app/frontend/supabase/migrations/` in the codebase.
+4. Navigate to `/PulseTrack/frontend/supabase/migrations/` in the codebase.
 5. Copy the SQL migration scripts and execute them in your Supabase SQL Editor. This initializes the required tables:
    - `users` / `profiles` (User metadata)
    - `projects` (Active project tracking)
@@ -62,7 +62,7 @@ You can control the frontend right from the workspace root folder using root scr
    ```
 
 2. **Configure Environment Variables:**
-   Create a `.env` file inside `weekly-report-app/frontend/` with your Supabase details:
+   Create a `.env` file inside `PulseTrack/frontend/` with your Supabase details:
    ```env
    VITE_SUPABASE_URL=https://your-project-id.supabase.co
    VITE_SUPABASE_PUBLISHABLE_KEY=your-anon-key
@@ -85,7 +85,7 @@ If you prefer running commands directly within the frontend:
 
 1. **Navigate to the Frontend Directory:**
    ```bash
-   cd weekly-report-app/frontend
+   cd PulseTrack/frontend
    ```
 
 2. **Install Frontend Dependencies:**
@@ -117,7 +117,7 @@ When starting Phase 2 (Python FastAPI application):
 
 1. **Navigate to the Backend Directory:**
    ```bash
-   cd weekly-report-app/backend
+   cd PulseTrack/backend
    ```
 
 2. **Initialize a Virtual Environment:**
