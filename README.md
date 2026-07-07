@@ -166,3 +166,10 @@ New sign-ups default to the **Team Member** role. To test manager dashboards, an
 3. **Manager Workcenter:** Fully responsive grids rendering weekly summaries, real-time workload trendlines, and category distribution charts using Recharts.
 4. **Historical Archive Search:** Powerful filtering allowing managers to search reports across users, projects, and specific week boundaries.
 5. **PulseTrack Chatbot Widget:** Integrates an ambient assistant side-panel to assist managers in queries (mock demo mode).
+
+
+## 📊 Database Design (ER Diagram)
+
+This Entity Relationship Diagram illustrates how users, roles, projects, and reports relate to one another within the PulseTrack database. 
+
+**[🔗 Click here to view the Professional ER Diagram (Crow's Foot Notation)](https://tinyurl.com/pulsetrack-er)**
