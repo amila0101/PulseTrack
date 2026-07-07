@@ -17,7 +17,7 @@ PulseTrack/
 
 ## 🛠️ Tech Stack & Features
 
-### Frontend (Phase 1)
+### Frontend
 - **Framework & Routing:** React 19, Vite, TanStack Router (SSR-ready with TanStack Start)
 - **Styling:** Tailwind CSS (v4) with OKLCH theme color palettes
 - **UI Components:** Radix UI primitives with custom-styled shadcn/ui layouts
@@ -25,7 +25,7 @@ PulseTrack/
 - **Data Visualization:** Recharts for active progress lines, workload distribution, and blocker counts
 - **Authentication & API Layer:** Supabase Client integration with custom Role-Based Access Control (RBAC)
 
-### Backend & Database (Planned / Phase 2)
+### Backend & Database
 - **API Framework:** Python (FastAPI) with RESTful endpoints
 - **Database:** PostgreSQL (managed on Supabase)
 - **Role-Based Security:** Row Level Security (RLS) policies on user roles and reports
@@ -112,7 +112,7 @@ If you prefer running commands directly within the frontend:
 
 ---
 
-### 3. Backend Setup (Phase 2 Placeholder)
+### 3. Backend Setup 
 When starting Phase 2 (Python FastAPI application):
 
 1. **Navigate to the Backend Directory:**
