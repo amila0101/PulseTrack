@@ -1,7 +1,8 @@
 import { createFileRoute, Link, Navigate } from "@tanstack/react-router";
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
-import { BarChart3, ClipboardList, Users, Sparkles } from "lucide-react";
+import { BarChart3, ClipboardList, Users } from "lucide-react";
+import brandLogo from "@/assets/brand.png";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -17,9 +18,7 @@ function LandingPage() {
       <header className="border-b border-border/60">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-hero-gradient text-white">
-              <Sparkles className="h-4 w-4" />
-            </div>
+            <img src={brandLogo} alt="PulseTrack Logo" className="h-8 w-8 object-contain" />
             <span className="font-display text-lg font-semibold">PulseTrack</span>
           </div>
           <div className="flex gap-2">

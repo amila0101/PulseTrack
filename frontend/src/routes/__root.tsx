@@ -75,13 +75,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "PulseTrack — Weekly Reports & Team Insights" },
+      { title: "PulseTrack" },
       {
         name: "description",
         content:
           "Streamline weekly team reports, track blockers, and visualize progress with a modern manager dashboard.",
       },
-      { property: "og:title", content: "PulseTrack — Weekly Reports & Team Insights" },
+      { property: "og:title", content: "PulseTrack" },
       {
         property: "og:description",
         content: "Streamline weekly team reports, track blockers, and visualize progress.",

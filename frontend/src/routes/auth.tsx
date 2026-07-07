@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { authApi } from "@/lib/apiService";
 import { useAuth } from "@/lib/auth-context";
 import { avantrix } from "@/integrations/avantrix";
-import { Sparkles } from "lucide-react";
+import brandLogo from "@/assets/brand.png";
 
 export const Route = createFileRoute("/auth")({
   component: AuthPage,
@@ -74,9 +74,7 @@ function AuthPage() {
     <div className="grid min-h-screen md:grid-cols-2">
       <div className="hidden bg-hero-gradient p-12 text-white md:flex md:flex-col md:justify-between">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/15 backdrop-blur">
-            <Sparkles className="h-5 w-5" />
-          </div>
+          <img src={brandLogo} alt="PulseTrack Logo" className="h-9 w-9 object-contain" />
           <span className="font-display text-xl font-semibold">PulseTrack</span>
         </div>
         <div>

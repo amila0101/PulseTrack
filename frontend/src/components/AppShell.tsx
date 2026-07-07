@@ -2,9 +2,10 @@ import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { BarChart3, ClipboardList, FolderKanban, LogOut, Sparkles, Users } from "lucide-react";
+import { BarChart3, ClipboardList, FolderKanban, LogOut, Users } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import brandLogo from "@/assets/brand.png";
 
 interface NavItem {
   to: string;
@@ -37,9 +38,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="flex min-h-screen bg-background">
       <aside className="hidden w-64 shrink-0 border-r border-border bg-sidebar md:flex md:flex-col">
         <div className="flex items-center gap-2 border-b border-sidebar-border px-5 py-4">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-hero-gradient text-white">
-            <Sparkles className="h-4 w-4" />
-          </div>
+          <img src={brandLogo} alt="PulseTrack Logo" className="h-8 w-8 object-contain" />
           <span className="font-display text-lg font-semibold">PulseTrack</span>
         </div>
         <nav className="flex-1 space-y-1 p-3">
@@ -81,7 +80,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="flex items-center justify-between border-b border-border bg-card px-6 py-3 md:hidden">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-primary" />
+            <img src={brandLogo} alt="PulseTrack Logo" className="h-8 w-8 object-contain" />
             <span className="font-display font-semibold">PulseTrack</span>
           </div>
           <Button variant="ghost" size="sm" onClick={handleSignOut}>
