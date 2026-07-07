@@ -173,3 +173,5 @@ New sign-ups default to the **Team Member** role. To test manager dashboards, an
 This Entity Relationship Diagram illustrates how users, roles, projects, and reports relate to one another within the PulseTrack database. 
 
 **[🔗 Click here to view the Professional ER Diagram (Crow's Foot Notation)](https://tinyurl.com/pulsetrack-er)**
+
+**[🔗 Click here to view the Professional ER Diagram (Chen's Notation)](https://tinyurl.com/pulsetrack-erd)**
