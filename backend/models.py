@@ -96,6 +96,7 @@ class ReportBase(BaseModel):
     tasks_planned: Optional[str] = None
     blockers: Optional[str] = None
     hours_worked: Optional[float] = Field(None, ge=0, le=168)  # max hours in a week
+    notes: Optional[str] = None  # optional notes or links
     status: ReportStatus = ReportStatus.SUBMITTED
 
 class ReportCreate(ReportBase):
@@ -108,6 +109,7 @@ class ReportUpdate(BaseModel):
     tasks_planned: Optional[str] = None
     blockers: Optional[str] = None
     hours_worked: Optional[float] = Field(None, ge=0, le=168)
+    notes: Optional[str] = None
     status: Optional[ReportStatus] = None
 
 class ReportResponse(ReportBase):

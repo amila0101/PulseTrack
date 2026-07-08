@@ -75,8 +75,28 @@ async def delete_project(
     _role=Depends(require_manager),
     supabase: Client = Depends(get_authed_supabase),
 ):
-    """Delete a project. Restricted to managers. Returns 204 No Content."""
+    """
+    Delete a project. Restricted to managers. Returns 204 No Content.
+    Returns 409 Conflict if reports are still linked to this project.
+    """
     from fastapi import Response
-    supabase.table("projects").delete().eq("id", str(project_id)).execute()
-    logger.info("Project %s deleted by user %s", project_id, current_user["id"])
-    return Response(status_code=status.HTTP_204_NO_CONTENT)
+    try:
+        supabase.table("projects").delete().eq("id", str(project_id)).execute()
+        logger.info("Project %s deleted by user %s", project_id, current_user["id"])
+        return Response(status_code=status.HTTP_204_NO_CONTENT)
+    except Exception as exc:
+        error_str = str(exc).lower()
+        # PostgREST raises an error when a FK constraint prevents deletion
+        if "foreign key" in error_str or "violates" in error_str or "23503" in error_str:
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail=(
+                    "Cannot delete this project because reports are still linked to it. "
+                    "Re-assign or delete those reports first."
+                ),
+            )
+        logger.error("Unexpected error deleting project %s: %s", project_id, exc)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to delete project. Please try again.",
+        )

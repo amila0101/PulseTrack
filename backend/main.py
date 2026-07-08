@@ -49,11 +49,12 @@ app.add_middleware(
 )
 
 # ── Routers ───────────────────────────────────────────────────────────────────
-from routers import users, projects, reports  # noqa: E402 (after app init)
+from routers import users, projects, reports, chat  # noqa: E402 (after app init)
 
-app.include_router(users.router, prefix="/api/users", tags=["Users"])
-app.include_router(projects.router, prefix="/api/projects", tags=["Projects"])
-app.include_router(reports.router, prefix="/api/reports", tags=["Reports"])
+app.include_router(users.router,    prefix="/api/users",    tags=["Users"])
+app.include_router(projects.router,  prefix="/api/projects",  tags=["Projects"])
+app.include_router(reports.router,   prefix="/api/reports",   tags=["Reports"])
+app.include_router(chat.router,      prefix="/api/chat",      tags=["Chat"])
 
 # ── Health check ──────────────────────────────────────────────────────────────
 @app.get("/health", tags=["Health"])

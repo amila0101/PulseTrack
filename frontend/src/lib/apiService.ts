@@ -35,6 +35,7 @@ export interface Report {
   tasks_planned: string | null;
   blockers: string | null;
   hours_worked: number | null;
+  notes: string | null;        // optional notes or links
   status: ReportStatus;
   created_at: string;
   updated_at: string;
@@ -149,6 +150,7 @@ export interface ReportInput {
   tasks_planned: string;
   blockers: string;
   hours_worked: number;
+  notes?: string | null;       // optional notes or links
   status?: ReportStatus;
 }
 
@@ -174,31 +176,34 @@ export const reportsApi = {
   },
 };
 
-// ── Chat (Demo / Placeholder) ─────────────────────────────────────────────────
+// ── Chat ─────────────────────────────────────────────────────────────────────
 /**
- * ⚠️  DEMO MODE — NOT A REAL AI BACKEND ⚠️
+ * Sends a question (plus the conversation history for multi-turn context)
+ * to the real FastAPI backend at POST /api/chat.
  *
- * This implementation uses hardcoded keyword matching as a placeholder.
- * To make this real, implement a POST /api/chat endpoint in the FastAPI backend
- * that proxies to your LLM provider (e.g. OpenAI, Gemini, LangChain), then
- * replace the body below with:
+ * The backend:
+ *   1. Pulls the last N weeks of real report data from Supabase.
+ *   2. Injects that data into a system prompt.
+ *   3. Calls the configured LLM (Gemini / OpenAI) and returns the answer.
  *
- *   return apiClient.post<{ answer: string }>("/api/chat", { question }).then(r => r.answer);
+ * Falls back to keyword matching against REAL data when no LLM key is set
+ * — so answers are always grounded in actual database content, never fiction.
  */
+export interface ChatMessage {
+  role: "user" | "assistant";
+  content: string;
+}
+
 export const chatApi = {
-  async ask(question: string): Promise<string> {
-    // Simulate network latency for realistic UX in demo mode
-    await new Promise((r) => setTimeout(r, 700));
-
-    const q = question.toLowerCase();
-    if (q.includes("blocker"))
-      return "Based on this week's reports, the top blockers involve API rate limits on the Mobile App project and pending design review on the Marketing Website.";
-    if (q.includes("design"))
-      return "The Design team shipped 12 components to the Design System, unblocked the Marketing Website hero, and started work on dark-mode tokens.";
-    if (q.includes("hours") || q.includes("workload"))
-      return "Total logged hours this week: 218h. Highest workload: Mobile App (86h), followed by Design System (72h).";
-
-    return "I'm running in demo mode. Connect a real LLM backend at POST /api/chat to get live answers about your team's weekly reports.";
+  async ask(
+    question: string,
+    history: ChatMessage[] = [],
+  ): Promise<string> {
+    const res = await apiClient.post<{ answer: string }>("/api/chat", {
+      question,
+      history,
+    });
+    return res.answer;
   },
 };
 

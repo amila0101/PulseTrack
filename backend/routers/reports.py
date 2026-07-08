@@ -76,6 +76,7 @@ async def list_reports(
             "tasks_planned": r["tasks_planned"],
             "blockers": r["blockers"],
             "hours_worked": r["hours_worked"],
+            "notes": r.get("notes"),
             "status": r["status"],
             "created_at": r["created_at"],
             "updated_at": r["updated_at"],
