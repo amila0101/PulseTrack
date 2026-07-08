@@ -88,7 +88,7 @@ function AuthPage() {
             across every team's week.
           </p>
         </div>
-        <p className="text-sm text-white/60">© PulseTrack — Weekly report platform</p>
+        <p className="text-sm text-white/60">© PulseTrack</p>
       </div>
 
       <div className="flex items-center justify-center p-6">

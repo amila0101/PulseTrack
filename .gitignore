@@ -1,1 +1,70 @@
-node_modules
+# ============================================================
+# PulseTrack — Root .gitignore
+# ============================================================
+
+# --- Environment files (NEVER commit secrets) ---
+.env
+.env.*
+!.env.example
+
+# ============================================================
+# Node / Frontend
+# ============================================================
+node_modules/
+dist/
+.output/
+.nitro/
+.vinxi/
+.vite/
+*.local
+
+# Build & cache
+.cache/
+.turbo/
+
+# ============================================================
+# Python / Backend
+# ============================================================
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution / packaging
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+*.cover
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+
+# ============================================================
+# Editor / OS artifacts
+# ============================================================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.suo
+*.user

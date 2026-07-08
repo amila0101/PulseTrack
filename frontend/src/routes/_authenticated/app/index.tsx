@@ -205,7 +205,12 @@ function ReportDialog({
 
   const save = useMutation({
     mutationFn: async () => {
-      const payload = { ...form, hours_worked: Number(form.hours_worked) || 0 };
+      const payload = {
+        ...form,
+        // Map the "__none__" sentinel back to null for the API
+        project_id: form.project_id === "__none__" || form.project_id === "" ? null : form.project_id,
+        hours_worked: Number(form.hours_worked) || 0,
+      };
       if (editing) return reportsApi.update(editing.id, payload);
       return reportsApi.create(payload);
     },
@@ -243,13 +248,17 @@ function ReportDialog({
           <div>
             <Label>Project</Label>
             <Select
-              value={form.project_id}
-              onValueChange={(v) => setForm({ ...form, project_id: v })}
+              value={form.project_id ?? "__none__"}
+              onValueChange={(v) =>
+                setForm({ ...form, project_id: v === "__none__" ? "" : v })
+              }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select project" />
               </SelectTrigger>
               <SelectContent>
+                {/* Sentinel option so the Select always has a valid display value */}
+                <SelectItem value="__none__">— No project —</SelectItem>
                 {projects.map((p) => (
                   <SelectItem key={p.id} value={p.id}>
                     {p.name}
