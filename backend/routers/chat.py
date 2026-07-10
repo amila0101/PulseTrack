@@ -107,14 +107,14 @@ Be concise, factual, and helpful. Format bullet lists when listing multiple item
 # ── LLM adapters ─────────────────────────────────────────────────────────────
 
 async def _call_gemini(system: str, history: list[ChatMessage], question: str) -> str:
-    """Call Google Gemini API (gemini-1.5-flash-latest — free tier)."""
+    """Call Google Gemini API (gemini-1.5-flash)."""
     import httpx
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={GEMINI_API_KEY}"
+    # 1. Fixed URL (No spaces, stable model name)
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
 
-    # Build contents array: system instruction + history + current question
     contents = []
-    for msg in history[-6:]:  # last 3 turns (6 messages) for context window efficiency
+    for msg in history[-6:]:
         contents.append({
             "role": "user" if msg.role == "user" else "model",
             "parts": [{"text": msg.content}]
@@ -122,7 +122,8 @@ async def _call_gemini(system: str, history: list[ChatMessage], question: str) -
     contents.append({"role": "user", "parts": [{"text": question}]})
 
     payload = {
-        "system_instruction": {"parts": [{"text": system}]},
+        # 2. Fixed Schema (systemInstruction instead of system_instruction)
+        "systemInstruction": {"parts": [{"text": system}]},
         "contents": contents,
         "generationConfig": {"maxOutputTokens": 512, "temperature": 0.2},
     }
