@@ -107,10 +107,10 @@ Be concise, factual, and helpful. Format bullet lists when listing multiple item
 # ── LLM adapters ─────────────────────────────────────────────────────────────
 
 async def _call_gemini(system: str, history: list[ChatMessage], question: str) -> str:
-    """Call Google Gemini API (gemini-1.5-flash — free tier)."""
+    """Call Google Gemini API (gemini-1.5-flash-latest" — free tier)."""
     import httpx
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest: generateContent?key={GEMINI_API_KEY}"
 
     # Build contents array: system instruction + history + current question
     contents = []
