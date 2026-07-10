@@ -110,7 +110,7 @@ async def _call_gemini(system: str, history: list[ChatMessage], question: str) -
     """Call Google Gemini API (gemini-1.5-flash-latest — free tier)."""
     import httpx
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest: generateContent?key={GEMINI_API_KEY}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={GEMINI_API_KEY}"
 
     # Build contents array: system instruction + history + current question
     contents = []
